@@ -7,14 +7,14 @@ export default {
 
   // An array of regexp pattern strings used to skip coverage collection
   coveragePathIgnorePatterns: [
-    "/node_modules/"
+    "/node_modules/",
   ],
 
   // Indicates which provider should be used to instrument code for coverage
   coverageProvider: "v8",
 
   // The root directory that Jest should scan for tests and modules within
-  rootDir: './',
+  roots: ['<rootDir>/tests', '<rootDir>/src'],
 
   // The test environment that will be used for testing
   testEnvironment: "node",
@@ -23,7 +23,8 @@ export default {
   testPathIgnorePatterns: [
     "/node_modules/",
     "dist",
-    "public"
+    "public",
+    "globalConfig.json"
   ],
 
   // A map from regular expressions to paths to transformers
