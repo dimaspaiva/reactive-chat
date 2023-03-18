@@ -1,23 +1,23 @@
 import { Request, Response } from 'express'
+import { createErrorResponse, createSuccessResponse } from '../config/configUtils';
 
 import { storeUser } from '../repositories/storeUser';
 
 export const createUser = async (req: Request, res: Response): Promise<void> => {
+  const requiredParams = ['name', 'document']
   const { name, document } = req.body
 
-  if (!name) {
-    res.status(400).json({ message: 'missing user name' })
-    return
+  for (const required of requiredParams) {
+    if (!req.body[required]) {
+      createErrorResponse(res, 400, `missing user ${required}`)
+      return
+    }
   }
 
-  if (!document) {
-    res.status(400).json({ message: 'missing user document' })
-    return
-  }
   try {
     const user = await storeUser(name, document)
-    res.status(201).json({ user })
+    createSuccessResponse(res, 201, { user })
   } catch (error) {
-    res.status(500).json({ message: 'internal server error' })
+    createErrorResponse(res, 500, 'internal server error')
   }
 }
