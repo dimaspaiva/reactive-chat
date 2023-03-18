@@ -16,19 +16,6 @@ export default {
   // The root directory that Jest should scan for tests and modules within
   rootDir: './',
 
-  // Run tests from one or more projects
-  projects: [{
-    preset: 'ts-jest',
-    testEnvironment: 'node',
-    displayName: 'server',
-    testMatch: ['<rootDir>/apps/server/**/?(*.)+(spec|test).[jt]s?(x)']
-  }, {
-    preset: 'ts-jest',
-    testEnvironment: 'jsdom',
-    displayName: 'client',
-    testMatch: ['<rootDir>/apps/client/**/?(*.)+(spec|test).[jt]s?(x)']
-  }],
-
   // The test environment that will be used for testing
   testEnvironment: "node",
 
