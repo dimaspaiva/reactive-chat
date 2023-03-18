@@ -17,7 +17,8 @@
   "scripts": {
     "dev": "ts-node-dev src",
     "build": "tsc --build",
-    "test": "jest"
+    "test": "jest",
+    "test:watch": "jest --watch --no-coverage"
   },
   "dependencies": {
     "express": "^4.18.2",
