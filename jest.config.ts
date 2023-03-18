@@ -18,15 +18,21 @@ export default {
 
   // Run tests from one or more projects
   projects: [{
-    preset: 'ts-jest',
+    preset: '@shelf/jest-mongodb',
     testEnvironment: 'node',
     displayName: 'server',
-    testMatch: ['<rootDir>/apps/server/**/?(*.)+(spec|test).[jt]s?(x)']
+    testMatch: ['<rootDir>/apps/server/**/?(*.)+(spec|test).[jt]s?(x)'],
+    transform: {
+      '^.+\\.ts?$': 'ts-jest',
+    }
   }, {
     preset: 'ts-jest',
     testEnvironment: 'node',
     displayName: 'client',
-    testMatch: ['<rootDir>/apps/client/**/?(*.)+(spec|test).[jt]s?(x)']
+    testMatch: ['<rootDir>/apps/client/**/?(*.)+(spec|test).[jt]s?(x)'],
+    transform: {
+      '^.+\\.ts?$': 'ts-jest',
+    }
   }],
 
   // The test environment that will be used for testing
@@ -38,12 +44,6 @@ export default {
     "dist",
     "public"
   ],
-
-  // A map from regular expressions to paths to transformers
-  preset: 'ts-jest',
-  transform: {
-    '^.+\\.ts?$': 'ts-jest',
-  },
 
   // An array of regexp pattern strings that are matched against all source file paths, matched files will skip transformation
   transformIgnorePatterns: ['<rootDir>/node_modules/'],

@@ -27,7 +27,7 @@ export default {
   ],
 
   // A map from regular expressions to paths to transformers
-  preset: 'ts-jest',
+  preset: '@shelf/jest-mongodb',
   transform: {
     '^.+\\.ts?$': 'ts-jest',
   },
