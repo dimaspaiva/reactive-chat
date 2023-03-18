@@ -1,10 +1,13 @@
-import express from 'express'
+import express, { Express } from 'express'
 import { configRoutes } from './routes'
 import { handlePublicFolder } from './staticFiles'
 
-const app = express()
+const createApp = (): Express => {
+  const app = express()
 
-handlePublicFolder(app)
-configRoutes(app)
+  handlePublicFolder(app)
+  configRoutes(app)
+  return app
+}
 
-export default app
+export default createApp()

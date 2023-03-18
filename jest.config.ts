@@ -24,7 +24,7 @@ export default {
     testMatch: ['<rootDir>/apps/server/**/?(*.)+(spec|test).[jt]s?(x)']
   }, {
     preset: 'ts-jest',
-    testEnvironment: 'jsdom',
+    testEnvironment: 'node',
     displayName: 'client',
     testMatch: ['<rootDir>/apps/client/**/?(*.)+(spec|test).[jt]s?(x)']
   }],

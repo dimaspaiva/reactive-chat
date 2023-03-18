@@ -3,10 +3,8 @@ import { join } from 'path'
 import { getPublicFolderPath } from './configUtils'
 
 export const configRoutes = (app: Express): void => {
-  app.get('/', (req, res) => {
+  app.get('/', (_req, res) => {
     const publicFolderPath = getPublicFolderPath()
-    console.log(publicFolderPath)
-    console.log('running :D')
     res.sendFile(join(publicFolderPath, 'index.html'))
   })
 }
