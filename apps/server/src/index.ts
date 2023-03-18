@@ -1,7 +1,12 @@
+import http from 'http'
 import app from "./config/app";
+import { insertWebSocketOnServer } from './websocket';
 
-const PORT = process.env.PORT || 8080
+const PORT = process.env.PORT || 8081
 
-app.listen(PORT, () => {
+const server = http.createServer(app)
+insertWebSocketOnServer(server)
+
+server.listen(PORT, () => {
   console.log(`server running, at http://localhost:${PORT}`)
 })
