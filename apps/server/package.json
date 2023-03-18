@@ -10,7 +10,8 @@
   },
   "scripts": {
     "dev": "ts-node-dev src",
-    "build": "tsc --build"
+    "build": "tsc --build",
+    "test": "jest"
   },
   "dependencies": {}
 }
