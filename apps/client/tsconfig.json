@@ -1,5 +1,6 @@
 {
   "compilerOptions": {
+    "jsx": "react",
     "module": "CommonJS",
     "target": "ESNext",
     "moduleResolution": "node",
@@ -12,5 +13,5 @@
     "composite": true,
     "outDir": "../../dist/client",
   },
-  "files": ["src/index.ts"]
+  "files": ["src/index.tsx"]
 }
