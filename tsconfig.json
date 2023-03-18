@@ -1,0 +1,16 @@
+{
+  "compilerOptions": {
+    "module": "CommonJS",
+    "target": "ESNext",
+    "moduleResolution": "node",
+    "esModuleInterop": true,
+
+    "noEmit": true,
+
+    "noImplicitAny": true
+  },
+  "references": [
+    {"path": "./apps/client"},
+    {"path": "./apps/server"},
+  ]
+}

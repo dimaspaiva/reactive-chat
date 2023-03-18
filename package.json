@@ -1,0 +1,17 @@
+{
+  "name": "reactive-chat",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "https://github.com/dimaspaiva/reactive-chat.git",
+  "author": "Dimas Paiva",
+  "license": "MIT",
+  "private": true,
+  "workspaces": {
+    "packages": [
+      "apps/**"
+    ]
+  },
+  "devDependencies": {
+    "typescript": "^5.0.2"
+  }
+}
