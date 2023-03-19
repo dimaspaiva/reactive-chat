@@ -27,7 +27,7 @@ export default {
     }
   }, {
     preset: 'ts-jest',
-    testEnvironment: 'node',
+    testEnvironment: 'jsdom',
     displayName: 'client',
     testMatch: ['<rootDir>/apps/client/**/?(*.)+(spec|test).[jt]s?(x)'],
     transform: {

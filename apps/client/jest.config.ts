@@ -17,7 +17,7 @@ export default {
   roots: ['<rootDir>/tests', '<rootDir>/src'],
 
   // The test environment that will be used for testing
-  testEnvironment: "node",
+  testEnvironment: "jsdom",
 
   // An array of regexp pattern strings that are matched against all test paths, matched tests are skipped
   testPathIgnorePatterns: [
@@ -34,4 +34,9 @@ export default {
 
   // An array of regexp pattern strings that are matched against all source file paths, matched files will skip transformation
   transformIgnorePatterns: ['<rootDir>/node_modules/'],
+
+
+  moduleNameMapper: {
+    '\\.(css|less)$': '<rootDir>/__mocks__/styleMock.ts',
+  },
 };
