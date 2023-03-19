@@ -8,7 +8,7 @@ const document = '123456'
 
 describe('User repositorie', () => {
   beforeAll(async () => {
-    await MongoHelper.connect(env.dbUrl)
+    await MongoHelper.connect(env.mongoDbURL)
   })
 
   afterAll(async () => {

@@ -6,7 +6,7 @@ import { MongoHelper } from '../../src/database/mongo'
 
 describe('/api/user', () => {
   beforeAll(async () => {
-    await MongoHelper.connect(env.dbUrl)
+    await MongoHelper.connect(env.mongoDbURL)
   })
 
   afterAll(async () => {
