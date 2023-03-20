@@ -32,6 +32,9 @@ export default {
     testMatch: ['<rootDir>/apps/client/**/?(*.)+(spec|test).[jt]s?(x)'],
     transform: {
       '^.+\\.ts?$': 'ts-jest',
+    },
+    moduleNameMapper: {
+      '\\.(css|less)$': '<rootDir>/apps/client/__mocks__/styleMock.ts',
     }
   }],
 
