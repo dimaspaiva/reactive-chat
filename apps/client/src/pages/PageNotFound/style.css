@@ -1,0 +1,21 @@
+.not-found_container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.not-found_title {
+  margin-bottom: 0.5rem;
+  font-weight: bold;
+}
+
+.not-found_link, .not-found_link:active,
+.not-found_link:visited, .not-found_link:hover {
+  font-weight: bold;
+  color: #336;
+  text-decoration: none;
+  border: 1px solid #336;
+  padding: 0.01rem 0.375rem;
+  border-radius: 0.125rem;
+}

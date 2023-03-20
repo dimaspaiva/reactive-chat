@@ -1,7 +1,7 @@
 import React from 'react'
 
-import Home from './pages/Home'
 import Toast from './components/ToastWrapper'
+import Router from './setup/Router';
 
 import 'react-toastify/dist/ReactToastify.css';
 
@@ -10,10 +10,12 @@ import './setup/global.css'
 
 
 const App = () => {
-  return <>
-    <Home />
-    <Toast />
-  </>
+  return (
+    <>
+      <Router />
+      <Toast />
+    </>
+  )
 }
 
 export default App

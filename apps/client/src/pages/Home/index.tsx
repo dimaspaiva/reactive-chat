@@ -36,26 +36,28 @@ const Home = () => {
     postCallToAPI(formData, 'user', toastLoadingId)
   }
 
-  return <div className="container">
-    <form action="submit" className="home-form" onSubmit={createUser}>
-      {formInputs.map((input) =>
-        <FormTextInput
-          key={input.name}
-          inputName={input.name}
-          title={input.title}
-          onChange={updateFormData(input.name)}
-        />
-      )}
-      <button
-        type="submit"
-        className="home-form_submit"
-        disabled={disableButton()}
-        data-testid="submit-form"
-      >
-        Send
-      </button>
-    </form>
-  </div>
+  return (
+    <div className="container" data-testid="page-home">
+      <form action="submit" className="home-form" onSubmit={createUser}>
+        {formInputs.map((input) =>
+          <FormTextInput
+            key={input.name}
+            inputName={input.name}
+            title={input.title}
+            onChange={updateFormData(input.name)}
+          />
+        )}
+        <button
+          type="submit"
+          className="home-form_submit"
+          disabled={disableButton()}
+          data-testid="submit-form"
+        >
+          Send
+        </button>
+      </form>
+    </div>
+  )
 }
 
 export default Home
