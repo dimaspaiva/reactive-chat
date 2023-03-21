@@ -1,9 +1,10 @@
 import React, { useContext, useEffect, useMemo, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
+
 import MessageInput from '../../components/MessageInput'
 import MessageList from '../../components/MessageList'
 import UserContext from '../../contexts/UserContext'
-import socket from '../../socket'
+import createSocket from '../../setup/socket'
 
 import './style.css'
 
@@ -17,10 +18,13 @@ const Chat = () => {
   const [messageList, setMessageList] = useState<MessageItem[]>([])
   const navigate = useNavigate()
   const { user } = useContext(UserContext)
+  const socket = createSocket(user)
 
   useEffect(() => {
     if (!user) {
       navigate('/')
+    } else {
+      socket.connect()
     }
   }, [])
 
@@ -64,7 +68,10 @@ const Chat = () => {
     >
       <div className='chat-box'>
         <MessageList messageList={messageList} />
-        <MessageInput appendMessage={appendUserMessageToList} />
+        <MessageInput
+          socket={socket}
+          appendMessage={appendUserMessageToList}
+        />
       </div>
     </div>
   )

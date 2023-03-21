@@ -1,15 +1,17 @@
-import React, { ChangeEvent, FormEvent, FormEventHandler, useState } from 'react'
+import React, { ChangeEvent, FormEvent, useState } from 'react'
+import { Socket } from 'socket.io-client'
 
-import socket from '../../socket'
+import socket from '../../setup/socket'
 
 import './style.css'
 
 export type MessageInputProps = {
   appendMessage: (message: string) => void
+  socket: Socket
 }
 
 const MessageInput = (props: MessageInputProps) => {
-  const { appendMessage } = props
+  const { appendMessage, socket } = props
 
   const [message, setMessage] = useState('')
 
