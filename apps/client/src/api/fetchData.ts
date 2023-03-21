@@ -24,6 +24,7 @@ export const postCallToAPI = async <T>(body: unknown, path: string, toastId: Id)
       return data
     })
     .catch((err) => {
+      toast.dismiss(toastId)
       toast('Unexpected error, try again.', { type: 'error' })
       console.error(err)
     })
