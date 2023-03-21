@@ -20,6 +20,10 @@
   word-wrap: break-word;
 }
 
+.message-list_message-chunk {
+  margin-bottom: 0.5rem;
+}
+
 .message-list_message-timestamp {
   font-weight: bold;
   font-size: 0.5rem;

@@ -19,6 +19,14 @@ const MessageList = (props: MessageListProps) => {
     return `${day}/${month}`
   }
 
+  const parseMessage = (message: string) => {
+    return message.split('\n').map((messageChunk) => (
+      <p className='message-list_message-chunk'>
+        {messageChunk.replace('\\n', '')}
+      </p>
+    ))
+  }
+
   return (
     <div
       className='message-list_container'
@@ -29,7 +37,10 @@ const MessageList = (props: MessageListProps) => {
           key={`${message.timestamp}-${message.auth}`}
           className={`message-list_message-container  ${message.auth}`}
         >
-          <p className='message-list_message'>{message.message} </p>
+          <div>
+            {parseMessage(message.message)}
+          </div>
+          {/* <p className='message-list_message'>{message.message} </p> */}
           <label className='message-list_message-timestamp'>{formatDate(message.timestamp)}</label>
         </div>
       )
