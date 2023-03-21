@@ -14,7 +14,7 @@ export default {
   coverageProvider: "v8",
 
   // The root directory that Jest should scan for tests and modules within
-  roots: ['<rootDir>/tests', '<rootDir>/src'],
+  roots: ['<rootDir>/src'],
 
   // The test environment that will be used for testing
   testEnvironment: "jsdom",
