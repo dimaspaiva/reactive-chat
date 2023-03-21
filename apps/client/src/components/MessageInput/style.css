@@ -1,0 +1,28 @@
+
+.chat-input_container {
+  border: none;
+  background-color: #fff;
+  display: flex;
+  justify-content: space-between;
+  padding: 0.25rem;
+  border-radius: 0.25rem;
+  margin-top: 0.5rem;
+}
+
+.chat-input_input {
+  border: none;
+  padding: 0.25rem;
+  width: 80%;
+  background-color: #ccc;
+  border-radius: 0.25rem;
+  color: #333;
+  letter-spacing: 0.01rem;
+}
+
+.chat-input_send {
+  background-color: #666;
+  border: none;
+  color: #fff;
+  padding: 0.125rem 0.5rem;
+  border-radius: 0.25rem;
+}
