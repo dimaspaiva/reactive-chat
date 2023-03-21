@@ -18,13 +18,13 @@ const Chat = () => {
   const [messageList, setMessageList] = useState<MessageItem[]>([])
   const navigate = useNavigate()
   const { user } = useContext(UserContext)
-  const socket = createSocket(user)
+  const [socket, setSocket] = useState(createSocket(user))
 
   useEffect(() => {
     if (!user) {
       navigate('/')
     } else {
-      socket.connect()
+      setSocket(socket.connect())
     }
   }, [])
 
