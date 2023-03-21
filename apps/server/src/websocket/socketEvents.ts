@@ -1,10 +1,12 @@
 import { Server as IOServer } from 'socket.io'
+import { formatFirstMessage } from '../chat/flows'
 
 export const addEventsListeners = (websocket: IOServer): void => {
   websocket.on('connection', (socket) => {
-    const username = socket.handshake.auth.name
+    const { name, document, id } = socket.handshake.auth
 
-    socket.emit('server message', `Hi ${username}! Welcome to reactive chat!`)
+    const firstInteraction = formatFirstMessage({ name, document, id })
+    socket.emit('server message', firstInteraction)
 
     socket.on('message', (message: string) => {
       console.log('received a message', message)
