@@ -19,6 +19,8 @@
   },
   "scripts": {
     "test": "jest",
-    "dev:server": "yarn workspace client build && yarn workspace server dev"
+    "dev:server": "yarn workspace client build && yarn workspace server dev",
+    "build": "yarn workspace client build && yarn workspace server build",
+    "deploy": "node ./dist/server/src"
   }
 }
