@@ -17,6 +17,7 @@ export const createUser = async (req: Request, res: Response): Promise<void> => 
   try {
     const user = await storeUser(name, document)
     createSuccessResponse(res, 201, { user })
+    console.log(`new user created ${user.name}`)
   } catch (error) {
     createErrorResponse(res, 500, 'internal server error')
   }
