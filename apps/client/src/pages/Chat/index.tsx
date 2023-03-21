@@ -1,6 +1,8 @@
-import React, { useMemo, useState } from 'react'
+import React, { useContext, useEffect, useMemo, useState } from 'react'
+import { useNavigate } from 'react-router-dom'
 import MessageInput from '../../components/MessageInput'
 import MessageList from '../../components/MessageList'
+import UserContext from '../../contexts/UserContext'
 import socket from '../../socket'
 
 import './style.css'
@@ -13,6 +15,14 @@ export type MessageItem = {
 
 const Chat = () => {
   const [messageList, setMessageList] = useState<MessageItem[]>([])
+  const navigate = useNavigate()
+  const { user } = useContext(UserContext)
+
+  useEffect(() => {
+    if (!user) {
+      navigate('/')
+    }
+  }, [])
 
   const appendUserMessageToList = (message: string) => {
     const newMessage: MessageItem = {
