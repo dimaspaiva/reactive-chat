@@ -3,13 +3,12 @@ import { fireEvent, render } from '@testing-library/react'
 
 import MessageInput from '.'
 
-import socket from '../../socket'
+import { createSocket } from '../../setup/socket'
+import { testUser } from '../../../__mocks__/userMock'
 
 const mockAppendMessage = jest.fn()
-jest.mock('../../socket', () => ({
-  emit: jest.fn()
-}))
 
+const socket = createSocket(testUser)
 const spySocketEmit = jest.spyOn(socket, 'emit').mockImplementation(jest.fn())
 
 describe('Message input', () => {
@@ -18,7 +17,7 @@ describe('Message input', () => {
   })
 
   it('should render message input component', () => {
-    const { getByTestId } = render(<MessageInput appendMessage={mockAppendMessage} />)
+    const { getByTestId } = render(<MessageInput socket={socket} appendMessage={mockAppendMessage} />)
 
     expect(getByTestId('message-input')).toBeTruthy()
     expect(getByTestId('send-message')).toBeTruthy()
@@ -26,7 +25,7 @@ describe('Message input', () => {
 
   it('should render message input component', () => {
     const testMessage = 'testing message input'
-    const { getByTestId } = render(<MessageInput appendMessage={mockAppendMessage} />)
+    const { getByTestId } = render(<MessageInput socket={socket} appendMessage={mockAppendMessage} />)
 
     const messageInput = getByTestId('message-input')
     const sendMessageButton = getByTestId('send-message')
@@ -40,7 +39,7 @@ describe('Message input', () => {
 
 
   it('send button should be disabled when there is no message', () => {
-    const { getByTestId } = render(<MessageInput appendMessage={mockAppendMessage} />)
+    const { getByTestId } = render(<MessageInput socket={socket} appendMessage={mockAppendMessage} />)
 
     const sendMessageButton = getByTestId('send-message') as HTMLButtonElement
 

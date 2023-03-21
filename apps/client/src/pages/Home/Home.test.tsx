@@ -1,13 +1,23 @@
-import { fireEvent, render } from "@testing-library/react"
-import React from "react"
+import React from 'react'
+import { fireEvent, render } from '@testing-library/react'
+
 import * as apiFetchData from '../../api/fetchData'
 
 import Home from "."
 
+import { UserContextTestWrapper } from '../../contexts/testHelper'
+
+jest.mock('react-router-dom', () => ({
+  useNavigate: () => jest.fn()
+}))
 
 describe('[Page] Home', () => {
   it('should render home page', () => {
-    const { getByTestId } = render(<Home />)
+    const { getByTestId } = render(
+      <UserContextTestWrapper>
+        <Home />
+      </UserContextTestWrapper>
+    )
 
     expect(getByTestId('name')).toBeTruthy()
     expect(getByTestId('document')).toBeTruthy()
@@ -15,7 +25,11 @@ describe('[Page] Home', () => {
   })
 
   it('should render home page and submit button is disabled', () => {
-    const { getByTestId } = render(<Home />)
+    const { getByTestId } = render(
+      <UserContextTestWrapper>
+        <Home />
+      </UserContextTestWrapper>
+    )
 
     const submitButton = getByTestId('submit-form') as HTMLButtonElement
     expect(submitButton.disabled).toBeTruthy()
@@ -25,7 +39,11 @@ describe('[Page] Home', () => {
     const testNameValue = 'test name'
     const testDocumentValue = 'testDocument'
 
-    const { getByTestId } = render(<Home />)
+    const { getByTestId } = render(
+      <UserContextTestWrapper>
+        <Home />
+      </UserContextTestWrapper>
+    )
 
     const submitButton = getByTestId('submit-form') as HTMLButtonElement
     expect(submitButton.disabled).toBeTruthy()
@@ -49,7 +67,12 @@ describe('[Page] Home', () => {
     const testDocumentValue = 'testDocument'
     spyPostCallToAPI.mockImplementationOnce(() => Promise.resolve({}))
 
-    const { getByTestId } = render(<Home />)
+    const { getByTestId } = render(
+      <UserContextTestWrapper>
+        <Home />
+      </UserContextTestWrapper>
+
+    )
     const submitButton = getByTestId('submit-form') as HTMLButtonElement
     const nameInput = getByTestId('name')
     const documentInput = getByTestId('document')
