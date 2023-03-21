@@ -9,7 +9,8 @@
     "build:prod": "webpack --mode=production --node-env=production",
     "watch": "webpack --watch",
     "dev": "webpack serve",
-    "test": "jest"
+    "test": "jest",
+    "test:watch": "jest --watch --no-coverage"
   },
   "devDependencies": {
     "@testing-library/react": "^14.0.0",
