@@ -1,18 +1,15 @@
-import { User } from "../models/user"
+import { generateMessage, generateTree } from "./decisionTree"
 
-const firstInterationOptions = [
-  { action: 'block-card', text: '\\n0 - Block credit card' },
-  { action: 'forgot-password', text: '\\n1 - Forgot my password' },
-  { action: 'loan', text: '\\n2 - Request a loan' },
+const mainActions = [
+  'Account Balance',
+  'Cancel my Credit Card',
+  'Get my IBAN',
+  'Do a transfer'
 ]
 
-const buildSalutation = (name: string) => {
-  return `Hi ${name} welcome to reactive chat!\n`
-}
+const mainDecisionTree = generateTree('Account services', mainActions)
+const firstMessage = generateMessage(mainDecisionTree)
 
-export const formatFirstMessage = (user: User) => {
-  const salutation = buildSalutation(user.name)
-  const optionsText = firstInterationOptions.map((option) => option.text).join('\n')
-  return `${salutation} ${optionsText}`
-
+export const buildSalutation = (name: string) => {
+  return `Hi ${name} welcome to reactive chat!\nHow can we help you today?\n${firstMessage}`
 }
