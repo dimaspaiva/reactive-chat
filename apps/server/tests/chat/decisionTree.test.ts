@@ -1,9 +1,10 @@
-import { generateMessage, generateTree, selectOption, updateOptionByIndex } from "../../src/chat/decisionTree"
+import { appendAction, generateMessage, generateTree, selectOption, updateOptionByIndex } from "../../src/chat/decisionTree"
 
 describe('Decision tree - reset password', () => {
+  const textTitle = 'Testing tree'
+  const options = ['Option 1', 'Option 2', 'Option 3']
+
   it('should generate a tree with 3 options', () => {
-    const textTitle = 'Testing tree'
-    const options = ['Option 1', 'Option 2', 'Option 3']
     const testTree = generateTree(textTitle, options)
 
     expect(testTree.text).toEqual(textTitle)
@@ -17,8 +18,6 @@ describe('Decision tree - reset password', () => {
   })
 
   it('should generate a tree with 3 options', () => {
-    const textTitle = 'Testing tree'
-    const options = ['Option 1', 'Option 2', 'Option 3']
     const testTree = generateTree(textTitle, options)
 
     const message = generateMessage(testTree)
@@ -30,8 +29,6 @@ describe('Decision tree - reset password', () => {
   })
 
   it('should update a tree option adding more options', () => {
-    const textTitle = 'Testing tree'
-    const options = ['Option 1', 'Option 2', 'Option 3']
     const testTree = generateTree(textTitle, options)
 
     const optionOneNewOptions = ['option 1.1', 'option 1.2']
@@ -47,20 +44,30 @@ describe('Decision tree - reset password', () => {
   })
 
   it('should return a new message when user select an option', () => {
-    const textTitle = 'Testing tree'
-    const options = ['Option 1', 'Option 2', 'Option 3']
     const testTree = generateTree(textTitle, options)
 
     const secondOptionsNewOptions = ['Option 2.1', 'Option 2.2']
 
     updateOptionByIndex(testTree, 1, secondOptionsNewOptions)
 
-    const message = selectOption(testTree, 1)
+    const selectedOption = selectOption(testTree, 1)
+    const message = generateMessage(selectedOption)
 
     expect(message.match(options[1])).toBeTruthy()
     expect(message.match(secondOptionsNewOptions[2])).toBeTruthy()
     expect(message.match(secondOptionsNewOptions[2])).toBeTruthy()
+  })
 
+  it('should execute a last option action', () => {
+    const testTree = generateTree(textTitle, options)
+    const spyAction = jest.fn().mockReturnValue('test')
 
+    appendAction(testTree.options[2], spyAction)
+
+    const selectedOption = selectOption(testTree, 2)
+    const response = generateMessage(selectedOption)
+
+    expect(spyAction).toBeCalled()
+    expect(response).toEqual('test')
   })
 })

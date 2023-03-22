@@ -1,16 +1,24 @@
+export type Action = () => string
+
 export type OptionLeaf = {
   text: string
-  options: OptionLeaf[]
+  options: OptionLeaf[],
+  action?: () => string
 }
 
-export const generateTree = (mainOption: string, options?: string[]): OptionLeaf => {
+export const generateTree = (mainOption: string, options?: string[], action?: Action): OptionLeaf => {
   return {
     text: mainOption,
-    options: options?.map((option) => generateTree(option))
+    options: options?.map((option) => generateTree(option)),
+    action
   }
 }
 
 export const generateMessage = (option: OptionLeaf): string => {
+  if (!option.options || option.options.length === 0) {
+    return option.action()
+  }
+
   const options = option.options
     .map((value, index) => `${index} - ${value.text}`)
     .join('\n')
@@ -27,7 +35,11 @@ export const updateOptionByIndex = (
   selectedOption.options = options.map((option) => generateTree(option))
 }
 
-export const selectOption = (mainOption: OptionLeaf, optionIndex: number): string => {
+export const selectOption = (mainOption: OptionLeaf, optionIndex: number): OptionLeaf => {
   const selectedOption = mainOption.options[optionIndex]
-  return generateMessage(selectedOption)
+  return selectedOption
+}
+
+export const appendAction = (option: OptionLeaf, action: () => string): void => {
+  option.action = action
 }
