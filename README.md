@@ -11,12 +11,14 @@ run dev: yarn dev
 ### Server
 
 Node + Express + Socket.io + Typescript
+
 run dev: yarn dev:server 
 
 ---
 ### Client
 
 Webpack + React + Typescript
+
 run dev: yarn dev:client 
 
 ---
