@@ -1,5 +1,6 @@
 import React, { useContext, useEffect, useMemo, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
+import LogoutButton from '../../components/Logout'
 
 import MessageInput from '../../components/MessageInput'
 import MessageList from '../../components/MessageList'
@@ -26,7 +27,7 @@ const Chat = () => {
     } else {
       setSocket(socket.connect())
     }
-  }, [])
+  }, [user])
 
   const appendUserMessageToList = (message: string) => {
     const newMessage: MessageItem = {
@@ -66,6 +67,7 @@ const Chat = () => {
       className='container'
       data-testid='page-chat'
     >
+      <LogoutButton />
       <div className='chat-box'>
         <MessageList messageList={messageList} />
         <MessageInput

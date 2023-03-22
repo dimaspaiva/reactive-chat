@@ -1,0 +1,23 @@
+.logout-container {
+  position: absolute;
+  top: 2rem;
+  left: 2rem;
+}
+
+.logout-action {
+  background-color: #333;
+  border: none;
+  color: #efefef;
+  border-radius: 0.25rem;
+  padding: 0.5rem 1rem;
+}
+
+.logout-action:active {
+  cursor: pointer;
+  opacity: 0.6;
+}
+
+.logout-action:hover {
+  cursor: pointer;
+  opacity: 0.9;
+}
